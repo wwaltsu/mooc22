@@ -11,7 +11,7 @@ import { gql } from '@apollo/client'
 `
  
 
-export const All_BOOKS = gql`
+export const ALL_BOOKS = gql`
   query {
     allBooks {
       title

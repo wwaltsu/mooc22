@@ -1,10 +1,10 @@
 
 import { useQuery } from '@apollo/client'
-import { All_BOOKS } from '../queries'
+import { ALL_BOOKS } from '../queries'
 
 const Books = (props) => {
 
-  const result = useQuery(All_BOOKS)
+  const result = useQuery(ALL_BOOKS)
 
   if (!props.show) {
     return null

@@ -43,7 +43,7 @@ const App = () => {
       <Authors show={page === 'authors'} setError={notify} />
       <Books show={page === 'books'} />
       <NewBook show={page === 'add'} setError={notify} />
-      <EditBorn show={page === 'born'} />
+      <EditBorn show={page === 'born'} setError={notify} />
     </div>
   )
 }

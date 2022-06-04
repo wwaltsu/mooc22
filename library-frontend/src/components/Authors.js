@@ -5,6 +5,7 @@ const Authors = ({setError, show}) => {
   console.log("props", setError)
   const result = useQuery(ALL_AUTHORS)
   
+  
 
   if (result.loading)  {
     return <div>loading...</div>

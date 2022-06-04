@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
-import { EDIT_AUTHOR } from '../queries'
+import { ALL_AUTHORS, EDIT_AUTHOR } from '../queries'
 
 const EditBorn = ({setError, show}) => {
   const [name, setName] = useState('')
@@ -8,6 +8,7 @@ const EditBorn = ({setError, show}) => {
   
 
   const [editAuthor, result] = useMutation(EDIT_AUTHOR, {
+    refetchQueries: [ { query: ALL_AUTHORS, variables: setBornTo, name } ],
     onError: (error) => {
       setError(error.graphQLErrors[0].message)
     },
@@ -54,6 +55,7 @@ const EditBorn = ({setError, show}) => {
         <div>
           born
           <input
+            type="number"
             value={setBornTo}
             onChange={({ target }) => setBorn(parseInt(target.value))}
           />
