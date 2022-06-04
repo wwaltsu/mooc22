@@ -162,7 +162,7 @@ const resolvers = {
 
 
 
-    editAuthor: (root, args) => {
+      editAuthor: (root, args) => {
       const authorName = authors.find((a) => a.name === args.name)
       if (!authorName) {
         return null
