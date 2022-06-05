@@ -1,15 +1,15 @@
-import { useQuery } from '@apollo/client'
-import { ALL_AUTHORS } from '../queries'
+import { useQuery } from "@apollo/client";
+import { ALL_AUTHORS } from "../queries";
 
-const Authors = ({setError, show}) => {
-  const result = useQuery(ALL_AUTHORS)
-  
-  if (result.loading)  {
-    return <div>loading...</div>
+const Authors = ({ setError, show }) => {
+  const result = useQuery(ALL_AUTHORS);
+
+  if (result.loading) {
+    return <div>loading...</div>;
   }
 
   if (!show) {
-    return null
+    return null;
   }
 
   return (
@@ -32,7 +32,7 @@ const Authors = ({setError, show}) => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default Authors
+export default Authors;

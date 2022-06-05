@@ -1,49 +1,41 @@
-import { useState } from 'react'
-import { useMutation } from '@apollo/client'
-import { ALL_BOOKS, CREATE_BOOK } from '../queries'
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ALL_BOOKS, CREATE_BOOK } from "../queries";
 
-
-
-
-
-
-const NewBook = ({setError, show}) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [published, setPublished] = useState('')
-  const [genre, setGenre] = useState('')
-  const [genres, setGenres] = useState([])
-
-  
+const NewBook = ({ setError, show }) => {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [published, setPublished] = useState("");
+  const [genre, setGenre] = useState("");
+  const [genres, setGenres] = useState([]);
 
   const [createBook] = useMutation(CREATE_BOOK, {
     refetchQueries: [{ query: ALL_BOOKS }],
     onError: (error) => {
-      setError(error.graphQLErrors[0].message)
+      setError(error.graphQLErrors[0].message);
     },
-  })
+  });
 
   if (!show) {
-    return null
+    return null;
   }
-  
 
   const submit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    createBook({ variables: { title, author, published, genres } })
+    createBook({ variables: { title, author, published, genres } });
 
-    setTitle('')
-    setPublished('')
-    setAuthor('')
-    setGenres([])
-    setGenre('')
-  }
+    setTitle("");
+    setPublished("");
+    setAuthor("");
+    setGenres([]);
+    setGenre("");
+  };
 
   const addGenre = () => {
-    setGenres(genres.concat(genre))
-    setGenre('')
-  }
+    setGenres(genres.concat(genre));
+    setGenre("");
+  };
 
   return (
     <div>
@@ -79,11 +71,11 @@ const NewBook = ({setError, show}) => {
             add genre
           </button>
         </div>
-        <div>genres: {genres.join(' ')}</div>
+        <div>genres: {genres.join(" ")}</div>
         <button type="submit">create book</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default NewBook
+export default NewBook;
