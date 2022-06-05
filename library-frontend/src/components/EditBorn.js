@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import { ALL_AUTHORS, EDIT_AUTHOR } from '../queries'
 
-const EditBorn = ({setError, show}) => {
+const EditBorn = ({setError, show, born}) => {
   const [name, setName] = useState('')
   const [setBornTo, setBorn] = useState('')
   
-
+  console.log("setBornTo: ", setBornTo, "name: ", name)
   const [editAuthor, result] = useMutation(EDIT_AUTHOR, {
+    
     refetchQueries: [ { query: ALL_AUTHORS, variables: setBornTo, name } ],
     onError: (error) => {
       setError(error.graphQLErrors[0].message)
@@ -33,7 +34,7 @@ const EditBorn = ({setError, show}) => {
     event.preventDefault()
 
     editAuthor({ variables: { name, setBornTo } })
-
+    
     setName('')
     setBorn('')
   

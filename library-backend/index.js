@@ -163,16 +163,16 @@ const resolvers = {
 
 
       editAuthor: (root, args) => {
-      const authorName = authors.find((a) => a.name === args.name)
-      if (!authorName) {
+      const author = authors.find(p => p.name === args.name)
+      if (!author) {
         return null
       }
-
-      const updatedBirthYear = { ...authorName, born: args.setBornTo }
-      persons = authors.map((a) => (a.name === args.name ? updatedBirthYear : a))
-      return updatedBirthYear
-    }, 
-  },
+  
+      const updatedAuthor = { ...author,  born: args.setBornTo }
+      authors = authors.map(p => p.name === args.name ? updatedAuthor : p)
+      return updatedAuthor
+    }   
+  }
 }
 
 
